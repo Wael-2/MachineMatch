@@ -4,7 +4,7 @@
 
 MachineMatch ist das Konzept einer Webanwendung zum Suchen und Vergleichen von gebrauchten Industriemaschinen.
 
-Die Anwendung unterstützt Nutzer dabei, Maschinen zu finden, die ihren individuellen Anforderungen entsprechen – etwa hinsichtlich Maschinentyp, Hersteller, Preis, Baujahr und Standort.
+Die Anwendung unterstützt Nutzer dabei, Maschinen zu finden, die ihren individuellen Anforderungen entsprechen wie beispielsweise bezüglich Maschinentyp, Hersteller, Preis, Baujahr und Standort.
 
 Das Projekt ist als Portfolio-Projekt mit Schwerpunkt auf praxisorientierter Webentwicklung konzipiert.
 
@@ -74,6 +74,7 @@ Nutzer können eine Anfrage an den Verkäufer senden.
 
 Das Projekt soll praktische Kenntnisse in folgenden Bereichen demonstrieren:
 
+- HTML und CSS
 - modernes JavaScript
 - asynchrones JavaScript
 - REST-APIs
