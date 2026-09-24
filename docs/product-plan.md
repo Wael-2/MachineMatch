@@ -72,7 +72,7 @@ Nutzer können eine Anfrage an den Verkäufer senden.
 
 ## 6. Projektziele
 
-Das Projekt soll praktische Kenntnisse in folgenden Bereichen demonstrieren:
+Das Projekt soll praktische Kenntnisse in folgenden Bereichen zeigen:
 
 - HTML und CSS
 - modernes JavaScript

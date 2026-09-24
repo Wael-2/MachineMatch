@@ -24,6 +24,12 @@ CREATE TABLE machines (
     description TEXT,
     image_url VARCHAR(500),
     seller_id INT NOT NULL,
+    weight_kg DECIMAL(10, 2),
+    working_hours INT,
+    width_mm DECIMAL(10, 2),
+    machine_condition VARCHAR(150),
+    height_mm DECIMAL(10, 2),
+    power_kw DECIMAL(10, 2),
 
     FOREIGN KEY (seller_id)
         REFERENCES sellers(id)
