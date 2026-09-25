@@ -1,0 +1,1 @@
+Create Backend/config/database.php with your local database credentials.
