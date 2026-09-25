@@ -1,20 +1,26 @@
-import{
+//import api.js
+import{  
     getMachines, getMachine, getSellers, sendInquiry
 }from "./api.js";
 
-const machines = await getMachines({
-    category: "Drehmaschine",
-    city: "Dortmund"
-});
-console.log(machines);
+const machines = await getMachines();
 
 const machine = await getMachine({id: 5});
-console.log(machine);
 
-const seller = getSellers({
-    city: "Essen"
-});
-console.log(seller);
+const sellers = await getSellers();
+
+
+
+
+//import state.js
+import{state} from "./state.js";
+state.machines = machines;
+
+state.selectedMachine = machine;
+
+state.sellers = sellers;
+
+console.log(state);
 
 
 
