@@ -7,6 +7,320 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+<section id="home-view">
+    <header class="navigation">
+        <a href="#" class="logo">MachineMatch</a>
+        <button class="find">Find Machines</button>
+        <button class="compare">Compare</button>
+        <button class="about">About</button>
+    </header>
+
+    <div class="main-content">
+        <h3>Search, compare and find machines that match your specific requirements.</h3>
+        <button class="find-v2">Find Machines</button>
+    </div>
+
+    <footer class="info">
+        <div class="guide">
+            <h4>How it works</h4>
+            <ol>
+                <li>Define your requirements</li>
+                <li>Find matching machines</li>
+                <li>Compare your options</li>
+            </ol>
+        </div>
+
+        <div class="advertisement">
+            <ul>
+                <li>Structured data</li>
+                <li>Transparent matching</li>
+                <li>Easy comparison</li>
+            </ul>
+        </div>
+    </footer>
+</section>
+
+
+
+
+<section id="search-view">
+    <header class="navigation">
+        <a href="#" class="logo">MachineMatch</a>
+        <button class="find">Find Machines</button>
+        <button class="compare">Compare</button>
+        <button class="about">About</button>
+        <button class="return-home">← Back to home</button>
+    </header>
+
+    <div class="search">
+        <label for="searchbar">Search for machines that match your requirements</label>
+        <input type="text" placeholder="CNC ..." id="searchbar">
+        <button class="search">Search</button>
+    </div>
+
+    <div class="filters">
+        <label for="category">Category: </label>
+        <select id="category"></select>
+
+        <label for="location">Location: </label>
+        <select id="location"></select>
+
+        <label for="max-price">Max price: </label>
+        <input type="text" id="max-price">
+
+        <label for="manufacturer">Manufacturer: </label>
+        <select id="manufacturer"></select>
+
+        <label for="working-hours">Working hours: </label>
+        <input type="text" id="working-hours">
+
+        <label for="year">Year: </label>
+        <select id="year"></select>
+
+        <button class="apply-filters">Apply filters</button>
+    </div>
+
+    <div class="results">
+        <p><span class="results">0</span> results found</p>
+        <label for="sort-by">Sort by: </label>
+        <select id="sort-by"></select>
+    </div>
+</section>
+
+
+
+
+<section id="detail-view">
+    <header class="navigation">
+        <a href="#" class="logo">MachineMatch</a>
+        <button class="find">Find Machines</button>
+        <button class="compare">Compare</button>
+        <button class="about">About</button>
+        <button class="return-results">← Back to results</button>
+    </header>
+
+    <div class="machine-info">
+        <img>
+        <h1 class="machine-name"></h1>
+        <p class="price"></p>
+        <p class="location"></p>
+        <button class="add-comparison">Add to comparison</button>
+    </div>
+
+    <div class="machine-specifications">
+      <div class="spec">
+        <span>Description:</span>
+        <span class="description"></span>
+      </div>
+      <div class="spec">
+        <span>Manufacturer:</span>
+        <span class="manufacturer"></span>
+      </div>
+      <div>
+        <span>Model:</span>
+        <span class="model"></span>
+      </div>
+      <div class="spec">
+        <span>Category:</span>
+        <span class="category"></span>
+      </div>
+      <div class="spec">
+        <span>Weight:</span>
+        <span class="weight"></span>
+      </div>
+      <div class="spec">
+        <span>Working hours:</span>
+        <span class="working-hours"></span>
+      </div>
+      <div class="spec">
+        <span>Width:</span>
+        <span class="width"></span>
+      </div>
+      <div class="spec">
+        <span>Height:</span>
+        <span class="height"></span>
+      </div>
+      <div class="spec">
+        <span>Power:</span>
+        <span class="power"></span>
+      </div>
+      <div class="spec">
+        <span>Condition:</span>
+        <span class="condition"></span>
+      </div>
+    </div>
+
+    <div class="matching-score">
+        <h3>Your Match</h3>
+        <p>This machine matches your requirements by<span class="matching-score">0</span>%</p>
+    </div>
+
+    <div class="seller-details">
+
+
+        <button class="send-inquiry">Send inquiry</button>
+    </div>
+</section>
+
+
+
+
+<section id="compare-view">
+    <header class="navigation">
+        <a href="#" class="logo">MachineMatch</a>
+        <button class="find">Find Machines</button>
+        <button class="compare">Compare</button>
+        <button class="about">About</button>
+        <button class="return-home">← Back to home</button>
+    </header>
+
+    <p>Compare selected machines side by side</p>
+    <table class="comparison">
+        <thead>
+            <tr>
+                <th></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Image</th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Model</th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Price(€)</th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+             <tr>
+                <th scope="row">Manufacturer</th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+             <tr>
+                <th scope="row">Category</th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Year</th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+             <tr>
+                <th scope="row">Condition</th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+             <tr>
+                <th scope="row">Location</th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Power(kw)</th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Hours</th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Weight(kg)</th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th scope="row">Match</th>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <th></th>
+            <td><button>View</button></td>
+            <td><button>View</button></td>
+            <td><button>View</button></td>
+        </tfoot>
+    </table>
+</section>
+
+
+
+
+<section id="about-modal">
+    <div class="about-content">
+        <button class="close-about">X</button>
+
+        <h2>About MachineMatch</h2>
+        <p>MachineMatch is a concept for a B2B machine discovery platform.
+            It helps users find, compare and evaluate used industrial
+            machines based on their individual requirements.</p>
+        
+        <h3>How it works</h3>
+        <ol>
+            <li>Search for machines</li>
+            <li>Apply your requirements and filters</li>
+            <li>Review the matching machines</li>
+            <li>Compare suitable options</li>
+            <li>Contact the seller</li>
+        </ol>
+
+        <p>
+            The matching score provides a transparent indication of
+            how well a machine matches the selected requirements.
+        </p>
+
+        <p>
+            MachineMatch is a portfolio project. All machines, sellers
+            and listings shown on this platform are synthetic demo data.
+        </p>
+    </div>  
+</section>
+
+
+
+
+<section id="inquiry-modal">
+    <p>Send inquiry</p>
+    <button class="cancel-modal">X</button>
+    <p class="requested-machine"></p>
+    <form class="inquiry-form">
+        <label for="username">Name: </label>
+        <input type="text" id="username" required>
+
+        <label for="e-mail">E-Mail: </label>
+        <input type="email" id="e-mail" required>
+
+        <label for="message">Message: </label>
+        <textarea id="message" required></textarea>
+
+        <button type="submit" class="send-modal">Send</button>
+    </form>
+</section>
+
 
 
 <script type="module" src="js/main.js"></script>
