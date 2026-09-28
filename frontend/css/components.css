@@ -1,0 +1,165 @@
+:root {
+    --color-primary: #2563EB;
+    --color-primary-dark: #1D4ED8;
+
+    --color-text: #111827;
+    --color-text-muted: #6B7280;
+
+    --color-background: #F8FAFC;
+    --color-surface: #FFFFFF;
+    --color-border: #E5E7EB;
+
+    --color-success: #16A34A;
+    --color-warning: #F59E0B;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 72px;
+    padding: 0 40px;
+
+    background: var(--color-surface);
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    text-decoration: none;
+    font-family: "Space Grotesk";
+}
+
+.logo-machine {
+    color: var(--color-text);
+}
+
+.logo-match {
+    color: var(--color-primary);
+}
+
+.logo-match:hover {
+    color: var(--color-primary-dark);
+}
+
+.navigation .find {
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.navigation .find:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.navigation button:active {
+    transform: translateY(1px);
+}
+
+.navigation button:focus {
+    outline: 5px solid var(--color-border);
+    outline-offset: 2px;
+}
+
+.compare, .about {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.compare:hover, .about:hover {
+    background-color: var(--color-primary-dark);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    padding: 5px 5px;
+}
+
+#home-view {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#home-view .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    transform: translateY(50px);
+}
+
+.main-content h3 {
+    font-weight: 1000;
+    font-size: 25px;
+}
+
+.find-v2 {
+    width: 280px;
+    height: 80px;
+    border: none;
+    border-radius: 50px;
+    background: var(--color-primary);
+    color: white;
+    font-size: 30px;
+    padding: 18 30px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.find-v2:active {
+    transform: translateY(2px);
+}
+
+.find-v2:hover {
+    background: var(--color-primary-dark);
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 30px 55px 40px;
+}
+
+.info-card {
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    background: var(--color-surface);
+    width: 320px;
+    padding: 24px 28px;
+}
+
+.info-card h4{
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.info-card ol, .info-card ul{
+    padding-left: 20px;
+    color: var(--color-text-muted);
+}
+
+.info-card li{
+    margin-bottom: 8px;
+}
+
+.tagline {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}

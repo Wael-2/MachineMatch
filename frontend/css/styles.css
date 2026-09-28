@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --color-primary: #2563EB;
+    --color-primary-dark: #1D4ED8;
+
+    --color-text: #111827;
+    --color-text-muted: #6B7280;
+
+    --color-background: #F8FAFC;
+    --color-surface: #FFFFFF;
+    --color-border: #E5E7EB;
+
+    --color-success: #16A34A;
+    --color-warning: #F59E0B;
+}
+
+body {
+    background: var(--color-background);
+}
+
+h1, h2, h3, label, span {
+    color: var(--color-text);
+}
+
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+.modal {
+    display: none;
+}
+
+.modal.active {
+    display: block;
+}
+

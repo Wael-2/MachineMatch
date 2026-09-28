@@ -5,24 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MachineMatch</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
-<section id="home-view">
+
+<section id="home-view" class="view active">
     <header class="navigation">
-        <a href="#" class="logo">MachineMatch</a>
-        <button class="find">Find Machines</button>
+        <a href="#" class="logo"><span class="logo-machine">Machine</span><span class="logo-match">Match</span></a>
+        <button class="find">Find Machines</button>   
         <button class="compare">Compare</button>
         <button class="about">About</button>
     </header>
 
     <div class="main-content">
-        <h3>Search, compare and find machines that match your specific requirements.</h3>
+        <h3>Search and compare machines that match your specific requirements.</h3>
         <button class="find-v2">Find Machines</button>
     </div>
 
     <footer class="info">
-        <div class="guide">
-            <h4>How it works</h4>
+
+        <div class="info-card">
+            <h4>How it works:</h4>
             <ol>
                 <li>Define your requirements</li>
                 <li>Find matching machines</li>
@@ -30,20 +33,24 @@
             </ol>
         </div>
 
-        <div class="advertisement">
+        <p class="tagline">Find the right machine - based on what you actually need.</p>
+
+        <div class="info-card">
+            <h4>Why MachineMatch?</h4>
             <ul>
                 <li>Structured data</li>
                 <li>Transparent matching</li>
                 <li>Easy comparison</li>
             </ul>
         </div>
+
     </footer>
 </section>
 
 
 
 
-<section id="search-view">
+<section id="search-view" class="view">
     <header class="navigation">
         <a href="#" class="logo">MachineMatch</a>
         <button class="find">Find Machines</button>
@@ -90,7 +97,7 @@
 
 
 
-<section id="detail-view">
+<section id="detail-view" class="view">
     <header class="navigation">
         <a href="#" class="logo">MachineMatch</a>
         <button class="find">Find Machines</button>
@@ -165,7 +172,7 @@
 
 
 
-<section id="compare-view">
+<section id="compare-view" class="view">
     <header class="navigation">
         <a href="#" class="logo">MachineMatch</a>
         <button class="find">Find Machines</button>
@@ -270,7 +277,7 @@
 
 
 
-<section id="about-modal">
+<section id="about-modal" class="modal">
     <div class="about-content">
         <button class="close-about">X</button>
 
@@ -303,7 +310,7 @@
 
 
 
-<section id="inquiry-modal">
+<section id="inquiry-modal" class="modal">
     <p>Send inquiry</p>
     <button class="cancel-modal">X</button>
     <p class="requested-machine"></p>
