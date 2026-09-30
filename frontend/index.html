@@ -12,7 +12,7 @@
 <section id="home-view" class="view active">
     <header class="navigation">
         <a href="#" class="logo"><span class="logo-machine">Machine</span><span class="logo-match">Match</span></a>
-        <button class="find">Find Machines</button>   
+        <button class="find">Find Machines</button>    
         <button class="compare">Compare</button>
         <button class="about">About</button>
     </header>
@@ -52,46 +52,123 @@
 
 <section id="search-view" class="view">
     <header class="navigation">
-        <a href="#" class="logo">MachineMatch</a>
-        <button class="find">Find Machines</button>
-        <button class="compare">Compare</button>
+        <a href="#" class="logo"><span class="logo-machine">Machine</span><span class="logo-match">Match</span></a>
+        <button class="compare-v2">Compare</button>
         <button class="about">About</button>
         <button class="return-home">← Back to home</button>
     </header>
+    
+  <main class="search-layout">
 
+   <div class="machine-finder">
     <div class="search">
-        <label for="searchbar">Search for machines that match your requirements</label>
+        <label for="searchbar">Find machines matching your requirements</label>
         <input type="text" placeholder="CNC ..." id="searchbar">
-        <button class="search">Search</button>
+        <button class="search-button">Search</button>
     </div>
 
     <div class="filters">
-        <label for="category">Category: </label>
-        <select id="category"></select>
+      <div class="filter">
+        <label for="category">Category</label>
+        <select id="category">
+            <option class="default-option" value="">Any category</option>
+            <option value="Band Saw">Band Saw</option>
+            <option value="CNC Lathe">CNC Lathe</option>
+            <option value="Compressor">Compressor</option>
+            <option value="Drilling Machine">Drilling Machine</option>
+            <option value="Grinding Machine">Grinding Machine</option>
+            <option value="Laser Cutting Machine">Laser Cutting Machine</option>
+            <option value="Machining Center">Machining Center</option>
+            <option value="Milling Machine">Milling Machine</option>
+            <option value="Press Brake">Press Brake</option>
+        </select>
+      </div>
 
-        <label for="location">Location: </label>
-        <select id="location"></select>
+      <div class="filter">
+        <label for="city">City</label>
+        <select id="city">
+            <option class="default-option" value="">Any city</option>
+            <option value="Bochum">Bochum</option>
+            <option value="Dortmund">Dortmund</option>
+            <option value="Düsseldorf">Düsseldorf</option>
+            <option value="Essen">Essen</option>
+            <option value="Frankfurt">Frankfurt</option>
+            <option value="Hannover">Hannover</option>
+            <option value="Köln">Cologne</option>
+            <option value="Münster">Münster</option>
+            <option value="Wuppertal">Wuppertal</option>
+        </select>
+      </div>
 
-        <label for="max-price">Max price: </label>
+      <div class="filter">
+        <label for="max-price">Max price(€)</label>
         <input type="text" id="max-price">
+      </div>
 
-        <label for="manufacturer">Manufacturer: </label>
-        <select id="manufacturer"></select>
+      <div class="filter">
+        <label for="manufacturer">Manufacturer</label>
+        <select id="manufacturer">
+            <option class="default-option" value="">Any manufacturer</option>
+            <option value="Alzmetall">Alzmetall</option>
+            <option value="Amada">Amada</option>
+            <option value="Atlas Copco">Atlas Copco</option>
+            <option value="Bystronic">Bystronic</option>
+            <option value="DMG MORI">DMG MORI</option>
+            <option value="Gillardon">Gillardon</option>
+            <option value="Haas">Haas</option>
+            <option value="Hurco">Hurco</option>
+            <option value="Jung">Jung</option>
+            <option value="Kaeser">Kaeser</option>
+            <option value="Kasto">Kasto</option>
+            <option value="Mazak">Mazak</option>
+            <option value="Studer">Studer</option>
+            <option value="TOS">TOS</option>
+            <option value="Trumpf">Trumpf</option>
+        </select>
+      </div>
 
-        <label for="working-hours">Working hours: </label>
+      <div class="filter">
+        <label for="working-hours">Working hours</label>
         <input type="text" id="working-hours">
+      </div>
 
-        <label for="year">Year: </label>
-        <select id="year"></select>
-
-        <button class="apply-filters">Apply filters</button>
+      <div class="filter">
+        <label for="year">Year</label>
+        <select id="year">
+            <option class="default-option" value="">Any year</option>
+            <option value="2022">2022 or newer</option>
+            <option value="2021">2021 or newer</option>
+            <option value="2020">2020 or newer</option>
+            <option value="2019">2019 or newer</option>
+            <option value="2018">2018 or newer</option>
+            <option value="2017">2017 or newer</option>
+            <option value="2016">2016 or newer</option>
+            <option value="2015">2015 or newer</option>
+        </select>
+      </div>
+        <button class="filter-button">Apply filters</button>
     </div>
+   </div> 
+  
 
     <div class="results">
-        <p><span class="results">0</span> results found</p>
+        <p><span class="results-count">0</span> results found</p>
         <label for="sort-by">Sort by: </label>
-        <select id="sort-by"></select>
+        <select id="sort-by">
+            <option class="default-option" value="">Default sorting</option>
+            <option value="price_asc">Price: low to high</option>
+            <option value="price_desc">Price: high to low</option>
+            <option value="year_desc">Year: newest first</option>
+            <option value="year_asc">Year: oldest first</option>
+            <option value="working_hours_asc">Working hours: lowest first</option>
+            <option value="working_hours_desc">Working hours: highest first</option>
+        </select>
+        <div class="machine-list">
+
+        </div>
     </div>
+
+  </main>
 </section>
 
 
@@ -99,8 +176,8 @@
 
 <section id="detail-view" class="view">
     <header class="navigation">
-        <a href="#" class="logo">MachineMatch</a>
-        <button class="find">Find Machines</button>
+        <a href="#" class="logo"><span class="logo-machine">Machine</span><span class="logo-match">Match</span></a>
+        <button class="find">Find Machines</button>   
         <button class="compare">Compare</button>
         <button class="about">About</button>
         <button class="return-results">← Back to results</button>
@@ -174,8 +251,8 @@
 
 <section id="compare-view" class="view">
     <header class="navigation">
-        <a href="#" class="logo">MachineMatch</a>
-        <button class="find">Find Machines</button>
+        <a href="#" class="logo"><span class="logo-machine">Machine</span><span class="logo-match">Match</span></a>
+        <button class="find">Find Machines</button>   
         <button class="compare">Compare</button>
         <button class="about">About</button>
         <button class="return-home">← Back to home</button>

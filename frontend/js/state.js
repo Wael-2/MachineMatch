@@ -6,6 +6,8 @@ export const state = {
 
     searchQuery: "",
 
+    sortBy: "",
+
     selectedMachine: null,
 
     matchedMachines: []
