@@ -59,9 +59,9 @@ findButtons.forEach(button => {
     });
 });
 
-
-//import search.js
+//import search.js and matching.js
 import {searchMachines, sortMachines} from "./search.js";
+import {calculateMatch} from "./matching.js";
 
 const returnHome = document.querySelector(".return-home");
 returnHome.addEventListener('click', () => {
@@ -103,7 +103,16 @@ function updateResults() {
     state.filters
     );
 
-    const sortedMachines = sortMachines(filteredMachines, state.sortBy);
+    state.matchedMachines = filteredMachines.map(machine => {
+        const matchScore = calculateMatch(machine, state.filters);
+    
+        return{
+            ...machine,
+            matchScore: matchScore
+        };
+    });
+
+    const sortedMachines = sortMachines(state.matchedMachines, state.sortBy);
 
     renderMachines(sortedMachines);
 
@@ -112,6 +121,40 @@ function updateResults() {
 };
 
 updateResults();
+
+const resultsHeader = document.querySelector(".results-header");
+
+const removeAll = document.createElement("button");
+removeAll.textContent = "Clear search + filters";
+removeAll.classList.add("remove-all");
+resultsHeader.appendChild(removeAll);
+
+removeAll.addEventListener("click", () => {
+
+    state.filters = {
+        category: "",
+        location: "",
+        maxPrice: "",
+        manufacturer: "",
+        maxWorkingHours: "",
+        minYear: ""
+    };
+
+    state.searchQuery = "";
+    state.sortBy = "match_score";
+
+    searchBar.value = "";
+    selectCategory.value = "";
+    selectCity.value = "";
+    maxPrice.value = "";
+    selectManufacturer.value = "";
+    workingHours.value = "";
+    selectYear.value = "";
+    selectSort.value = "match_score";
+
+    updateResults();
+});
+
 
 
 

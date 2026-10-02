@@ -331,6 +331,31 @@
     font-size: 15px;
 }
 
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remove-all {
+    background-color: var(--color-primary);
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.remove-all:hover{
+    background-color: var(--color-primary-dark);
+}
+
+.remove-all:active{
+    transform: translateY(1px);
+}
+
 .results select:focus{
     border-color: var(--color-primary);
 }
@@ -356,8 +381,19 @@ select:has(option.default-option:checked){
     border-radius: 12px;
     min-width: 0;
     margin-top: 15px;
-    cursor: pointer;
     transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    animation: machineCardIn 0.5s ease both;
+}
+
+@keyframes machineCardIn{
+    from{
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .machine-card:hover{

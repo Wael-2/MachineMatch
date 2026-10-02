@@ -43,9 +43,9 @@ export function renderMachines(machines) {
 
         extra.innerHTML = `
           <div class="match">
-            <p><strong><span class="match-score">0</span>%</strong> <span class="decoration">Match</span></p>
+            <p><strong><span class="match-score">${machine.matchScore}</span>%</strong> <span class="decoration">Match</span></p>
           </div>        
-        <button class = "detail-button">View Details</button>
+        <button class = "detail-button" data-machine-id="${machine.id}">View Details</button>
         `;
 
         card.append(image, info, extra);

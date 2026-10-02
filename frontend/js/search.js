@@ -48,7 +48,9 @@ export function sortMachines(machines, sortBy) {
         working_hours_asc: (a, b) =>
             Number(a.working_hours) - Number(b.working_hours),
         working_hours_desc: (a, b) =>
-            Number(b.working_hours) - Number(a.working_hours)
+            Number(b.working_hours) - Number(a.working_hours),
+        match_score: (a, b) => 
+            Number(b.matchScore) - Number(a.matchScore)
     };
 
     if (sorters[sortBy]) {
