@@ -1,6 +1,6 @@
 export const state = {
     machines: [],
-    sellers: [],
+    seller: {},
 
     filters: {},
 

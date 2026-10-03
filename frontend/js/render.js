@@ -1,4 +1,4 @@
-const machineList = document.querySelector(".machine-list"); 
+const machineList = document.querySelector(".machine-list");
 
 export function renderMachines(machines) {
     machineList.innerHTML = "";

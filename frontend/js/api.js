@@ -24,9 +24,9 @@ export async function getMachine({id}){
    }
 };
 
-export async function getSellers(filters = {}){
+export async function getSeller({id}){
    try {
-      const params = new URLSearchParams(filters);
+      const params = new URLSearchParams({id});
       const url = "http://localhost/MachineMatch/Backend/api/sellers.php?" + params.toString();
       const response = await fetch(url);
       const sellers = await response.json();
