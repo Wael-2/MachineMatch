@@ -55,9 +55,11 @@ findButtons.forEach(button => {
 import {searchMachines, sortMachines} from "./search.js";
 import {calculateMatch} from "./matching.js";
 
-const returnHome = document.querySelector(".return-home");
-returnHome.addEventListener('click', () => {
-    showView(homeView);
+const returnHomeButtons = document.querySelectorAll(".return-home");
+returnHomeButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        showView(homeView);
+    });
 });
 
 const searchBar = document.querySelector("#searchbar");
@@ -224,9 +226,106 @@ function renderSellerDetails(seller) {
     container.append(company, location, email, phone); 
 };
 
+const compareButtons = document.querySelectorAll(".compare, .compare-v2");
+compareButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        renderComparison();
+        showView(compareView);
+    });
+});
 
+detailView.querySelector(".add-comparison").addEventListener("click", () => {
+    const machine = state.selectedMachine;
 
+    if (state.comparedMachines.some(item => String(item.id) === String(machine.id))){
+        alert("This machine has already been added to the comparison.")
+        return;
+    }
 
+    if (state.comparedMachines.length >= 3){
+        alert("You can only compare up to 3 machines.");
+        return;
+    }
+
+    state.comparedMachines.push(machine);
+    alert("Machine has been added to comparison.")
+    renderComparison();
+});
+
+function renderComparison(){
+    const table = document.querySelector(".comparison");
+    const headerCells = table.querySelectorAll("thead th");
+    const rows = table.querySelectorAll("tbody tr");
+
+    headerCells.forEach((cell, index) => {
+    if (index > 0) {
+        cell.textContent = "";
+    }
+    });
+
+    rows.forEach(row => {
+        for (let columnIndex = 1; columnIndex < row.cells.length; columnIndex++) {
+            row.cells[columnIndex].replaceChildren();
+        }
+    });
+
+    state.comparedMachines.forEach((machine, index) => {
+        headerCells[index + 1].textContent = machine.title;
+    
+
+        const image = document.createElement("img");
+        image.src = machine.image_url;
+        image.alt = machine.title;
+        image.style.width = "140px";
+
+        rows[0].cells[index + 1].replaceChildren(image);
+
+        const values = [
+            machine.model,
+            `${machine.price} €`,
+            machine.manufacturer,
+            machine.category,
+            machine.year,
+            machine.machine_condition,
+            machine.location,
+            `${machine.power_kw} kW`,
+            `${machine.working_hours} h`,
+            `${machine.weight_kg} kg`,
+            `${machine.matchScore}%`
+        ];
+
+        values.forEach((value, rowIndex) => {
+            rows[rowIndex + 1].cells[index + 1].textContent = value;
+        });
+    });
+
+};
+
+const viewButtons = document.querySelectorAll(".view-button");
+viewButtons.forEach((button, index) => {
+    button.addEventListener("click", async () => {
+        const machine = state.comparedMachines[index];
+
+        if (!machine) {
+            alert("Add a machine to compare.")
+            return;
+        }
+
+        state.selectedMachine = machine;
+
+        const sellerResult = await getSeller({ id: machine.seller_id });
+        const seller = sellerResult[0];
+
+        renderMachineDetails(machine);
+        renderSellerDetails(seller);
+        showView(detailView);
+    });
+});
+
+document.querySelector(".clear-comparison").addEventListener("click", () => {
+    state.comparedMachines = [];
+    renderComparison();
+});
 
 
 

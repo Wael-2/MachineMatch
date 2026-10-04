@@ -10,5 +10,7 @@ export const state = {
 
     selectedMachine: null,
 
-    matchedMachines: []
+    matchedMachines: [],
+
+    comparedMachines: []
 };

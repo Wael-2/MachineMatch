@@ -270,12 +270,12 @@
     <header class="navigation">
         <a href="#" class="logo"><span class="logo-machine">Machine</span><span class="logo-match">Match</span></a>
         <button class="find">Find Machines</button>   
-        <button class="compare">Compare</button>
         <button class="about">About</button>
         <button class="return-home">← Back to home</button>
     </header>
-
-    <p>Compare selected machines side by side</p>
+    <div class="compare-manual">
+        <h2>Compare selected machines side by side</h2>
+    </div>
     <table class="comparison">
         <thead>
             <tr>
@@ -335,7 +335,7 @@
                 <td></td>
             </tr>
             <tr>
-                <th scope="row">Power(kw)</th>
+                <th scope="row">Power(kW)</th>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -361,11 +361,12 @@
         </tbody>
         <tfoot>
             <th></th>
-            <td><button>View</button></td>
-            <td><button>View</button></td>
-            <td><button>View</button></td>
+            <td><button class="view-button">View</button></td>
+            <td><button class="view-button">View</button></td>
+            <td><button class="view-button">View</button></td>
         </tfoot>
     </table>
+    <button class="clear-comparison">Clear comparison</button>
 </section>
 
 
