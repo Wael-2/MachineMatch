@@ -1,92 +1,38 @@
-# MachineMatch
+# Produktplan: MachineMatch
 
-## 1. Projektübersicht
+## Produktidee
 
-MachineMatch ist das Konzept einer Webanwendung zum Suchen und Vergleichen von gebrauchten Industriemaschinen.
+MachineMatch hilft Unternehmen und Fachleuten, gebrauchte Industriemaschinen anhand ihrer Anforderungen zu finden, technische Daten zu prüfen und geeignete Angebote direkt zu vergleichen.
 
-Die Anwendung unterstützt Nutzer dabei, Maschinen zu finden, die ihren individuellen Anforderungen entsprechen wie beispielsweise bezüglich Maschinentyp, Hersteller, Preis, Baujahr und Standort.
+## Zielgruppe und Problem
 
-Das Projekt ist als Portfolio-Projekt mit Schwerpunkt auf praxisorientierter Webentwicklung konzipiert.
+Die Zielgruppe sind gewerbliche Käufer und Fachleute, für die Maschinenangebote viele technische Merkmale enthalten. Der Vergleich dieser Angebote kostet Zeit. MachineMatch bündelt Suche, Anforderungen, Match-Erklärung, Detaildaten und Verkäuferkontakt in einem kompakten Ablauf.
 
-## 2. Zielgruppe
+## Gelieferter Projektumfang
 
-Die primäre Zielgruppe besteht aus Unternehmen und Fachleuten, die auf der Suche nach gebrauchten Industriemaschinen sind.
+Der aktuelle Stand ist ein lokaler Portfolio-Prototyp mit synthetischen Angebots- und Verkäuferdaten.
 
-
-## 3. Kernproblem
-
-Die Suche nach einer geeigneten Maschine kann den Vergleich zahlreicher Angebote und technischer Spezifikationen erfordern.
-
-MachineMatch zielt darauf ab, diesen Prozess zu vereinfachen, indem Nutzer ihre Anforderungen definieren und passende Maschinen vergleichen können.
-
-
-## 4. Kernfunktionen
-
-### Maschinensuche
-
-Nutzer können anhand von Schlagworten und Maschineneigenschaften nach Maschinen suchen.
-
-### Filterfunktion
-
-Nutzer können die Maschinenauswahl filtern nach:
-
-- Maschinentyp
-- Hersteller
-- Preis
-- Baujahr
-- Standort
-
-### Matching-Funktion
-
-MachineMatch berechnet einen Übereinstimmungsgrad (Match-Score) basierend auf den Anforderungen des Nutzers.
-
-### Maschinendetails
-
-Nutzer können eine Maschine aufrufen und detaillierte Informationen dazu einsehen.
-
-### Maschinenvergleich
-
-Nutzer können mehrere Maschinen miteinander vergleichen.
-
-### Verkäuferanfrage
-
-Nutzer können eine Anfrage an den Verkäufer senden.
+- **Suche:** Suchbegriff und Filter für Kategorie, Standort, Preis, Hersteller, Arbeitsstunden und Mindestbaujahr.
+- **Sortierung:** unter anderem nach Match-Score, Preis, Baujahr und Arbeitsstunden.
+- **Matching:** gewichtete Heuristik für Preis, Baujahr, Arbeitsstunden, Hersteller und Standort; der Score wird auf die aktiven Kriterien normiert.
+- **Details:** Maschinenbild, Preis, Standort, Beschreibung, technische Spezifikationen und zugehöriger Verkäufer.
+- **Vergleich:** bis zu drei Maschinen nebeneinander, inklusive Bild, Kerndaten und Match-Score; Maschinen können aus der Liste entfernt werden, indem der Vergleich geleert wird.
+- **Anfrage:** Formular mit Maschinenbezug; das Backend validiert und speichert die Anfrage in MySQL.
+- **Navigation und Information:** getrennte Views, About-Modal und Inquiry-Modal.
 
 
-## 5. Technologie-Stack
+## Produktentscheidungen
 
-### Frontend
-
-- HTML
-- CSS
-- JavaScript
-
-### Backend
-
-- PHP
-- MySQL
-
-### Deployment
-
-- Linux
-
-## 6. Projektziele
-
-Das Projekt soll praktische Kenntnisse in folgenden Bereichen zeigen:
-
-- HTML und CSS
-- modernes JavaScript
-- asynchrones JavaScript
-- REST-APIs
-- HTTP-Anfragen
-- PHP
-- SQL und MySQL
-- Frontend-Architektur
-- Responsive Webdesign
-- Git und Versionsverwaltung
-- Linux-Deployment
+- Der Detail-View wird gezielt über „View Details“ geöffnet, damit die Karten in den Suchergebnissen nicht versehentlich navigieren.
+- Der Vergleich ist auf drei Maschinen begrenzt, damit die Tabelle auf üblichen Desktop-Bildschirmen lesbar bleibt.
+- Die Demo verwendet synthetische Daten; sie stellt keinen echten Maschinenmarktplatz dar.
+- Der Match-Score ist eine transparente Regelberechnung. Er dient als Orientierung, nicht als Garantie für Eignung.
 
 
-## 7. Projektumfang
+## Abschlusskriterien für den aktuellen Prototyp
 
-Der Schwerpunkt liegt auf Qualität, Wartbarkeit und dem Nachweis relevanter technischer Fähigkeiten, anstatt auf der Implementierung einer Vielzahl von Funktionen.
+- Maschinen können gesucht, gefiltert, sortiert und in der Detailansicht geöffnet werden.
+- Verkäuferinformationen werden über die Maschinen-Seller-Verknüpfung geladen.
+- Bis zu drei unterschiedliche Maschinen lassen sich vergleichen und die Tabelle kann geleert werden.
+- Eine gültige Anfrage wird mit der ausgewählten Maschinen-ID in MySQL gespeichert.
+- Projektaufbau, lokale Einrichtung, Architektur und bekannte Grenzen sind dokumentiert.

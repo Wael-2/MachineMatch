@@ -366,7 +366,9 @@
             <td><button class="view-button">View</button></td>
         </tfoot>
     </table>
+    <div class="clear-area">    
     <button class="clear-comparison">Clear comparison</button>
+    </div>
 </section>
 
 
@@ -406,21 +408,26 @@
 
 
 <section id="inquiry-modal" class="modal">
-    <p>Send inquiry</p>
-    <button class="cancel-modal">X</button>
-    <p class="requested-machine"></p>
-    <form class="inquiry-form">
-        <label for="username">Name: </label>
-        <input type="text" id="username" required>
+    <div class="inquiry-content">
+        <button class="cancel-modal" type="button">X</button>
 
-        <label for="e-mail">E-Mail: </label>
-        <input type="email" id="e-mail" required>
+        <h2>Send inquiry</h2>
+        <p class="requested-machine"></p>
 
-        <label for="message">Message: </label>
-        <textarea id="message" required></textarea>
+        <form class="inquiry-form">
+            <label for="username">Name</label>
+            <input type="text" id="username" required>
 
-        <button type="submit" class="send-modal">Send</button>
-    </form>
+            <label for="e-mail">E-Mail</label>
+            <input type="email" id="e-mail" required>
+
+            <label for="message">Message</label>
+            <textarea id="message" required></textarea>
+
+            <p class="inquiry-status" aria-live="polite"></p>
+            <button type="submit" class="send-modal">Send inquiry</button>
+        </form>
+    </div>
 </section>
 
 

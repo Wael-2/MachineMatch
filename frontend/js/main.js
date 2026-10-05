@@ -43,6 +43,14 @@ function closeModal(modal) {
     modal.classList.remove("active");
 };
 
+const logoLinks = document.querySelectorAll(".logo");
+logoLinks.forEach(logo => {
+    logo.addEventListener("click", event => {
+        event.preventDefault();
+        showView(homeView);
+    });
+});
+
 
 const findButtons = document.querySelectorAll(".find, .find-v2");
 findButtons.forEach(button => {
@@ -149,6 +157,8 @@ removeAll.addEventListener("click", () => {
     updateResults();
 });
 
+
+//Implement detail view
 const machineList = document.querySelector(".machine-list");
 machineList.addEventListener('click', async (event) => {
     if(!event.target.classList.contains("detail-button")){
@@ -226,6 +236,8 @@ function renderSellerDetails(seller) {
     container.append(company, location, email, phone); 
 };
 
+
+//Implement compare view
 const compareButtons = document.querySelectorAll(".compare, .compare-v2");
 compareButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -323,9 +335,69 @@ viewButtons.forEach((button, index) => {
 });
 
 document.querySelector(".clear-comparison").addEventListener("click", () => {
+    if (state.comparedMachines.length === 0) {
+        alert("The comparison is already empty.");
+        return;
+    }
     state.comparedMachines = [];
     renderComparison();
 });
+
+
+//Implement modals
+const aboutButton = document.querySelectorAll(".about");
+aboutButton.forEach(button => {
+    button.addEventListener("click", () => {
+        openModal(aboutModal);
+    });
+});
+const closeAbout = document.querySelector(".close-about");
+closeAbout.addEventListener("click", () => {
+    closeModal(aboutModal);
+});
+
+
+const inquiryButton = document.querySelector(".send-inquiry");
+const requestedMachine = document.querySelector(".requested-machine");
+inquiryButton.addEventListener("click", () => {
+    requestedMachine.textContent = state.selectedMachine.title;
+    openModal(inquiryModal);
+});
+const cancelModal = document.querySelector(".cancel-modal");
+cancelModal.addEventListener("click", () => {
+    closeModal(inquiryModal);
+});
+
+const inquiryForm = document.querySelector(".inquiry-form");
+const inquiryStatus = document.querySelector(".inquiry-status");
+
+inquiryForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const machine = state.selectedMachine;
+
+    const result = await sendInquiry({
+        machine_id: machine.id,
+        name: document.querySelector("#username").value.trim(),
+        email: document.querySelector("#e-mail").value.trim(),
+        message: document.querySelector("#message").value.trim()
+    });
+
+    if (!result) {
+        inquiryStatus.textContent = "The inquiry could not be sent.";
+        return;
+    }
+
+    if (result.error) {
+        inquiryStatus.textContent = result.error;
+        return;
+    }
+
+    inquiryStatus.textContent = "Your inquiry was sent successfully.";
+    inquiryForm.reset();
+});
+
+
 
 
 
