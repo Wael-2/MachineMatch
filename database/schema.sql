@@ -1,6 +1,4 @@
-CREATE DATABASE IF NOT EXISTS machine_match;
 
-USE machine_match;
 
 CREATE TABLE sellers (
     id INT AUTO_INCREMENT PRIMARY KEY,

@@ -1,7 +1,7 @@
 export async function getMachines(filters = {}) {
    try {
     const params = new URLSearchParams(filters);
-    const url =  "http://localhost/MachineMatch/Backend/api/machines.php?" + params.toString();
+    const url = "https://machinematch.freedev.app/backend/api/machines.php?" + params.toString();
     const response = await fetch(url);
     const machines = await response.json();
 
@@ -14,7 +14,7 @@ export async function getMachines(filters = {}) {
 export async function getMachine({id}){
    try{
    const params = new URLSearchParams({id});
-   const url = "http://localhost/MachineMatch/Backend/api/machines.php?" + params.toString();
+   const url = "https://machinematch.freedev.app/backend/api/machines.php?" + params.toString();
    const response = await fetch(url);
    const machine = await response.json();
 
@@ -27,7 +27,7 @@ export async function getMachine({id}){
 export async function getSeller({id}){
    try {
       const params = new URLSearchParams({id});
-      const url = "http://localhost/MachineMatch/Backend/api/sellers.php?" + params.toString();
+      const url = "https://machinematch.freedev.app/backend/api/sellers.php?" + params.toString();
       const response = await fetch(url);
       const sellers = await response.json();
 
@@ -39,7 +39,7 @@ export async function getSeller({id}){
 
 export async function sendInquiry(data){
    try {
-      const url = "http://localhost/MachineMatch/Backend/api/inquiries.php"
+      const url = "https://machinematch.freedev.app/backend/api/inquiries.php";
       const response = await fetch(url, {
          method: "POST",
          headers: {

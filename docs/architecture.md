@@ -2,29 +2,32 @@
 
 ## Überblick
 
-MachineMatch ist eine kleine, clientseitig gerenderte Webanwendung mit einem PHP/MySQL-Backend. Das Frontend wird als HTML, CSS und JavaScript-Module ausgeliefert. JavaScript ruft die PHP-Endpunkte mit `fetch()` auf; PHP kommuniziert über PDO mit MySQL.
+MachineMatch ist eine öffentlich erreichbare, clientseitig gerenderte Webanwendung mit einem PHP/MySQL-Backend. Das Frontend wird ohne Bundler als HTML, CSS und JavaScript-Module ausgeliefert. JavaScript ruft die PHP-Endpunkte mit `fetch()` auf; PHP kommuniziert über PDO mit MySQL.
 
+Im Live-Betrieb liegen die Website-Dateien im Hosting-Webroot `htdocs`. Die JavaScript-API-Basis ist `https://machinematch.freedev.app/backend/api/`.
 
+```text
 Browser
-├── frontend/index.html       Struktur der Views und Modals
-├── frontend/css/              Layout und Darstellung
-└── frontend/js/
-    ├── main.js                Initialisierung, State-Flows und Events
-    ├── api.js                 fetch()-Funktionen für das Backend
-    ├── state.js               gemeinsamer In-Memory-Frontend-State
-    ├── search.js              Suchfilter und Sortierung
-    ├── matching.js            Berechnung des Match-Scores
-    └── render.js               Darstellung der Suchkarten
-             │ HTTP/JSON
-             ▼
-Backend/api/
-├── machines.php               Maschinen lesen und filtern
-├── sellers.php                Verkäufer lesen
-└── inquiries.php              Anfragen validieren und speichern
-             │ PDO
-             ▼
-          MySQL
+└── https://machinematch.freedev.app/
+    ├── index.html              Struktur der Views und Modals
+    ├── css/                    Layout und Darstellung
+    ├── js/
+    │   ├── main.js             Initialisierung, State-Flows und Events
+    │   ├── api.js              fetch()-Funktionen für das Backend
+    │   ├── state.js            gemeinsamer In-Memory-Frontend-State
+    │   ├── search.js            Suchfilter und Sortierung
+    │   ├── matching.js          Berechnung des Match-Scores
+    │   └── render.js             Darstellung der Suchkarten
+    └── backend/api/
+        ├── machines.php         Maschinen lesen und filtern
+        ├── sellers.php          Verkäufer lesen
+        └── inquiries.php        Anfragen validieren und speichern
+                 │ PDO
+                 ▼
+              MySQL beim Hosting
+```
 
+Die Datenbank wird nicht direkt vom Browser angesprochen. Die Anfragen an das PHP-Backend erfolgen über HTTPS. Der Inquiry-Endpunkt speichert erfolgreich in der Live-Datenbank; ein E-Mail-Versand ist nicht implementiert.
 
 ## Frontend-Verantwortlichkeiten
 
@@ -61,9 +64,10 @@ Backend/api/
 ### Verkäuferanfrage
 
 1. Das Inquiry-Modal zeigt den Titel der aktuell ausgewählten Maschine.
-2. Das Formular sendet `machine_id`, `name`, `email` und `message` als JSON-POST an `inquiries.php`.
+2. Das Formular sendet `machine_id`, `name`, `email` und `message` als JSON-POST an `https://machinematch.freedev.app/backend/api/inquiries.php`.
 3. PHP prüft Pflichtfelder, E-Mail-Format und Maschinen-ID und schreibt die Anfrage in `inquiries`.
 4. Das Backend antwortet mit HTTP 201 bei Erfolg oder einem Fehlerstatus und JSON-Fehlerobjekt.
+5. Es wird keine E-Mail an den Verkäufer gesendet.
 
 ## Datenmodell
 
@@ -73,31 +77,35 @@ Backend/api/
 
 Die Fremdschlüssel sind in `database/schema.sql` definiert. Die Lese-Endpunkte geben Ergebnisse mit `fetchAll(PDO::FETCH_ASSOC)` als JSON-Arrays zurück, auch wenn eine ID-Abfrage nur einen Datensatz liefert.
 
-
 ## API-Verträge
+
+Die API-Basis im Live-Betrieb lautet `https://machinematch.freedev.app/backend/api/`.
 
 ### Maschinen
 
-`GET /Backend/api/machines.php` liefert ein JSON-Array. Der Endpunkt kann unter anderem nach `id`, `category`, `location`, `maxPrice`, `manufacturer`, `max_working_hours` und `min_year` filtern.
+`GET /backend/api/machines.php` liefert ein JSON-Array. Der Endpunkt kann unter anderem nach `id`, `category`, `location`, `maxPrice`, `manufacturer`, `max_working_hours` und `min_year` filtern.
 
 ### Verkäufer
 
-`GET /Backend/api/sellers.php` liefert ein JSON-Array und akzeptiert `id`, `company_name` und `city` als Filter.
+`GET /backend/api/sellers.php` liefert ein JSON-Array und akzeptiert `id`, `company_name` und `city` als Filter.
 
 ### Anfragen
 
-`POST /Backend/api/inquiries.php` erwartet `Content-Type: application/json` und ein Objekt mit:
+`POST /backend/api/inquiries.php` erwartet `Content-Type: application/json` und ein Objekt mit:
 
-json
+```json
 {
   "machine_id": 1,
   "name": "Example Name",
   "email": "name@example.com",
   "message": "I am interested in this machine."
 }
+```
 
-Der Endpunkt prüft diese Angaben und legt anschließend einen Datensatz in `inquiries` an. Er verschickt keine E-Mail.
+Der Endpunkt prüft diese Angaben und legt anschließend einen Datensatz in `inquiries` an. Die Speicherung in der Live-Datenbank wurde bestätigt. Der Endpunkt verschickt keine E-Mail.
 
-## Laufzeit und Konfiguration
+## Laufzeit, Konfiguration und Deployment
 
-`Backend/config/database.php` stellt die PDO-Verbindung zur lokalen Datenbank her. Die Datei wird durch `.gitignore` nicht versioniert. Frontend-API-URLs sind derzeit auf `localhost/MachineMatch` festgelegt; ein anderer Installationspfad erfordert eine Anpassung in `frontend/js/api.js`.
+Beim Hosting liegen `index.html`, `css/`, `js/` und `backend/` im Verzeichnis `htdocs`. Das PHP-Backend und MySQL werden beim Hosting-Anbieter ausgeführt. `backend/config/database.php` stellt die PDO-Verbindung bereit; sie enthält Konfiguration, die nicht in öffentliche Dokumentation oder ein öffentliches Repository gehört.
+
+Die Frontend-API-Aufrufe in `js/api.js` zeigen auf `https://machinematch.freedev.app/backend/api/...`. Für eine lokale Entwicklungsumgebung, beispielsweise XAMPP, kann eine lokale Projektkopie mit lokaler Datenbank verwendet werden. Dafür muss die API-Basis in `js/api.js` auf die lokale URL (zum Beispiel `http://localhost/MachineMatch/backend/api/`) geändert und `backend/config/database.php` lokal konfiguriert werden. Das ändert nicht den aktuellen Live-Bereitstellungszustand.

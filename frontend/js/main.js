@@ -393,7 +393,8 @@ inquiryForm.addEventListener("submit", async (event) => {
         return;
     }
 
-    inquiryStatus.textContent = "Your inquiry was sent successfully.";
+    alert("Your inquiry has been sent successfully.");
+    closeModal(inquiryModal);
     inquiryForm.reset();
 });
 
