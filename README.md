@@ -17,7 +17,7 @@ Die Live-Demo ist unter [https://machinematch.freedev.app](https://machinematch.
 
 ## Technologie und Bereitstellung
 
-- Frontend: HTML, CSS und JavaScript-Module ohne Build-Schritt
+- Frontend: HTML, CSS und JavaScript-Module 
 - PHP-Backend mit PDO und MySQL beim Hosting-Anbieter
 - Die Website-Dateien liegen im Webroot `htdocs` (unter anderem `index.html`, `css/`, `js/` und `backend/`).
 - Die JavaScript-API-Aufrufe verwenden `https://machinematch.freedev.app/backend/api/...`.
